@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CarZone Gallery</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<script>
+function openImage(img) {
+    const lightbox = document.querySelector('.gallery-lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+
+    lightboxImg.src = img.src;
+    lightbox.classList.add('active');
+}
+
+function closeImage() {
+    document.querySelector('.gallery-lightbox').classList.remove('active');
+}
+</script>
+
+<body>
+
+<header>
+    <nav class="container">
+        <h1 class="logo">
+    <a href="index.html">CarZone</a>
+</h1>
+
+        <a href="index.html" class="btn">Home</a>
+    </nav>
+</header>
+
+<section class="gallery-page">
+    <div class="container">
+        <h2 >Gallery</h2>
+
+        <div class="gallery-grid">
+    <img src="images/gallery/1.jpg" onclick="openImage(this)">
+    <img src="images/gallery/2.jpg" onclick="openImage(this)">
+    <img src="images/gallery/3.jpg" onclick="openImage(this)">
+    <img src="images/gallery/4.jpg" onclick="openImage(this)">
+    <img src="images/gallery/5.jpg" onclick="openImage(this)">
+    <img src="images/gallery/6.jpg" onclick="openImage(this)">
+    <img src="images/gallery/7.jpg" onclick="openImage(this)">
+    <img src="images/gallery/8.jpg" onclick="openImage(this)">
+    <img src="images/gallery/9.jpg" onclick="openImage(this)">
+</div>
+
+<!-- Lightbox -->
+
+
+    </div>
+</section>
+<div class="gallery-lightbox" onclick="closeImage()">
+    <img id="lightbox-img">
+</div>
+
+
+</body>
+</html>

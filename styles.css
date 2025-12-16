@@ -1,0 +1,446 @@
+/* =========================
+   Global Styles
+========================= */
+:root {
+    --primary-color: #e53935;
+    --secondary-color: #263238;
+    --light-color: #f4f4f4;
+    --dark-color: #1a1a1a;
+    --font-stack: 'Poppins', sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-stack);
+    line-height: 1.6;
+    background-color: var(--light-color);
+    color: var(--secondary-color);
+}
+
+.container {
+    width: 80%;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+a {
+    text-decoration: none;
+    color: var(--primary-color);
+}
+
+/* =========================
+   Header & Nav
+========================= */
+header {
+    background: var(--dark-color);
+    color: var(--light-color);
+    padding: 1rem 0;
+    border-bottom: 3px solid var(--primary-color);
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-weight: 800;
+    font-size: 1.8rem;
+    color: var(--primary-color);
+}
+
+header ul {
+    list-style: none;
+    display: flex;
+}
+
+header ul li a {
+    color: var(--light-color);
+    padding: 0 15px;
+    font-weight: 600;
+    transition: color 0.3s;
+}
+
+header ul li a:hover {
+    color: var(--primary-color);
+}
+
+/* =========================
+   Buttons
+========================= */
+.btn {
+    display: inline-block;
+    background: var(--primary-color);
+    color: var(--light-color);
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background-color: #c62828;
+}
+
+.secondary-btn {
+    background: transparent;
+    border: 2px solid var(--light-color);
+    color: var(--light-color);
+}
+
+.secondary-btn:hover {
+    background: var(--light-color);
+    color: var(--primary-color);
+}
+
+/* =========================
+   Hero Section
+========================= */
+.hero {
+    min-height: 100vh;
+    background-image: linear-gradient(
+        rgba(0, 0, 0, 0.5),
+        rgba(0, 0, 0, 0.7)
+    ), url('images/carsbg.jpg');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: var(--light-color);
+}
+
+.hero h2 {
+    font-size: 3rem;
+    margin-bottom: 15px;
+    font-weight: 800;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+}
+
+/* =========================
+   Models Section
+========================= */
+.models {
+    min-height: 100vh;
+    padding: 6rem 0;
+    background-image:
+        linear-gradient(
+            rgba(255, 255, 255, 0.75),
+            rgba(255, 255, 255, 0.75)
+        ),
+        url("images/mgcyberster.jpg");
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+.models::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+        circle at center,
+        rgba(255, 255, 255, 0.15) 35%,
+        rgba(0, 0, 0, 0.06) 100%
+    );
+    pointer-events: none;
+}
+
+.models .container {
+    position: relative;
+    z-index: 1;
+    padding: 4rem 0 5rem;   /* vertical spacing only */
+    text-align: center;
+}
+
+
+.models h3 {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+}
+
+.models-intro {
+    max-width: 600px;
+    margin: 0 auto 16px;
+    font-size: 1rem;
+    color: #666;
+}
+
+.models-divider {
+    width: 60px;
+    height: 4px;
+    background: var(--primary-color);
+    margin: 0 auto 60px;
+    border-radius: 2px;
+}
+
+/* =========================
+   Model Cards Grid
+========================= */
+.model-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    margin-top: 60px;
+    transition: grid-template-columns 0.45s ease;
+}
+
+.model-cards:has(.card:nth-child(1):hover) {
+    grid-template-columns: 1.4fr 0.8fr 0.8fr;
+}
+
+.model-cards:has(.card:nth-child(2):hover) {
+    grid-template-columns: 0.8fr 1.4fr 0.8fr;
+}
+
+.model-cards:has(.card:nth-child(3):hover) {
+    grid-template-columns: 0.8fr 0.8fr 1.4fr;
+}
+
+/* =========================
+   Individual Card
+========================= */
+.card {
+    background: #fff;
+    padding: 28px;
+    border-radius: 10px;
+    text-align: left;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: transform 0.35s ease, box-shadow 0.35s ease, opacity 0.35s ease;
+}
+
+.card:hover {
+    transform: translateY(-6px);
+}
+
+.model-cards:hover .card:not(:hover) {
+    opacity: 0.65;
+}
+
+.card h4 {
+    font-size: 1.5rem;
+    margin-bottom: 12px;
+}
+
+/* =========================
+   COLLAPSIBLE CONTENT (FIX)
+========================= */
+.card-content {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3; /* teaser lines */
+    overflow: hidden;
+    transition: all 0.35s ease;
+}
+
+.card:hover .card-content {
+    -webkit-line-clamp: unset;
+}
+
+/* =========================
+   Images
+========================= */
+.model-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    transition: transform 0.4s ease;
+}
+
+.card:hover img {
+    transform: scale(1.06);
+}
+
+/* =========================
+   Features List
+========================= */
+.model-features {
+    margin-top: 12px;
+    padding-left: 18px;
+    font-size: 0.85rem;
+    color: #555;
+}
+
+.model-features li {
+    margin-bottom: 6px;
+    list-style: disc;
+}
+
+/* =========================
+   CTA Section
+========================= */
+.cta {
+    background: var(--dark-color);
+    color: var(--light-color);
+    padding: 4rem 0;
+    text-align: center;
+}
+
+.models::after {
+    content: "";
+    display: block;
+    height: 60px;
+}
+
+/* =========================
+   Footer
+========================= */
+footer {
+    background: var(--dark-color);
+    color: var(--light-color);
+    padding: 20px 0;
+    font-size: 0.9rem;
+}
+
+footer .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-links a {
+    color: var(--light-color);
+    margin: 0 6px;
+    transition: color 0.3s;
+}
+
+.footer-links a:hover {
+    color: var(--primary-color);
+}
+
+/* =========================
+   Responsive
+========================= */
+@media (max-width: 768px) {
+    .container {
+        width: 90%;
+    }
+
+    header .container,
+    footer .container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .model-cards {
+        grid-template-columns: 1fr;
+    }
+
+    .model-cards:has(.card:hover) {
+        grid-template-columns: 1fr;
+    }
+
+    .card-content {
+        -webkit-line-clamp: unset;
+    }
+}
+.gallery-page {
+    padding: 6rem 0;
+    background-image:
+        linear-gradient(
+            rgba(255, 255, 255, 0.75),
+            rgba(255, 255, 255, 0.75)
+        ),
+        url("images/crossroad-car-safari-scene.jpg"); /* pick a wide car image */
+    background-size: cover;
+    background-position: center;
+}
+
+
+.gallery-page h2 {
+    text-align: center;
+    font-size: 2.4rem;
+    color: var(--primary-color);
+    margin-bottom: 50px;
+}
+
+
+/* Bigger, bolder grid */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 28px;
+}
+
+/* Bigger thumbnails */
+.gallery-grid img {
+    width: 100%;
+    height: 200px;              /* THIS controls size */
+    object-fit: cover;
+    border-radius: 14px;
+    cursor: pointer;
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.18);
+}
+
+/* Hover polish */
+.gallery-grid img:hover {
+    transform: scale(1.06);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.3);
+}
+.gallery-page .container {
+    background: rgba(255, 255, 255, 0.92);
+    border-radius: 18px;
+    padding: 4rem 3rem 4.5rem;
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.18);
+    backdrop-filter: blur(6px);
+    width: 80%;
+    max-width: 1100px;          /* slightly smaller */
+    padding: 3rem 3rem 3.5rem;
+}
+/* ===== Gallery Lightbox ===== */
+
+/* ===== Gallery Lightbox ===== */
+
+.gallery-lightbox {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.75);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.35s ease;
+    z-index: 9999;
+}
+
+.gallery-lightbox.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.gallery-lightbox img {
+    max-width: 90vw;
+    max-height: 85vh;
+    border-radius: 16px;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.35);
+}
+
+
+
+/* Hide grid when active */
+.gallery-lightbox.active ~ .gallery-grid,
+.gallery-lightbox.active + .gallery-grid {
+    opacity: 0;
+    pointer-events: none;
+}
